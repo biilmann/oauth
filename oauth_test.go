@@ -7,6 +7,24 @@ import (
 	"testing"
 )
 
+// Make sure there's no panics such as nil pointer dereferences
+func TestAuthorize(t *testing.T) {
+	method := "POST"
+	uri := "http://example.com"
+	consumer := &Consumer{"abc", "123"}
+	token := &Token{"xyz", "+∞"}
+
+	in, _ := http.NewRequest(method, uri, nil)
+
+	defer func() {
+		if r := recover(); r != nil {
+			t.Error(r)
+		}
+	}()
+
+	consumer.Authorize(in, token)
+}
+
 // Test example from https://dev.twitter.com/oauth/overview/creating-signatures
 func TestSignature(t *testing.T) {
 	method := "POST"

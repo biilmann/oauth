@@ -148,7 +148,7 @@ func requestParameters(req *http.Request) string {
 	}
 
 	// Add POST/PUT body values to parameters
-	if req.Method == "POST" || req.Method == "PUT" {
+	if req.Body != nil && (req.Method == "POST" || req.Method == "PUT") {
 		// read body
 		body, _ := ioutil.ReadAll(req.Body)
 
