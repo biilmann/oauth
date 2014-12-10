@@ -2,9 +2,18 @@
 
 Modular and simple OAuth implementation for Go.
 
-Authorizing a request
-```
+## Installation
+
+`go get github.com/nhjk/oauth`
+
+## Documentation
+
+http://godoc.org/github.com/nhjk/oauth
+
+## Authorizing a request
+
+```go
 req := http.NewRequest("GET", "https://example.com", nil)
-c := &Consumer{"key", "secret"}
-c.Authorize(req, &Token{"key", "secret"})
+c := &oauth.Consumer{*ckey*, *csecret*}
+c.Authorize(req, &oauth.Token{*tkey*, *tsecret*})
 ```
