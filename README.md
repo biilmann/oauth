@@ -1,6 +1,6 @@
-# OAuth
+# OAuth 1.0a
 
-Modular and simple OAuth implementation for Go.
+Modular and simple OAuth 1.0a implementation for Go.
 
 ## Installation
 
@@ -11,6 +11,8 @@ Modular and simple OAuth implementation for Go.
 http://godoc.org/github.com/nhjk/oauth
 
 ## Authorizing a request
+
+For a more detailed example, see [examples/twitter.go](https://github.com/nhjk/oauth/blob/master/examples/twitter.go).
 
 ```go
 req := http.NewRequest("GET", "https://example.com", nil)
