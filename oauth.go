@@ -147,8 +147,8 @@ func requestParameters(req *http.Request) string {
 		}
 	}
 
-	// Add POST/PUT body values to parameters
-	if req.Body != nil && (req.Method == "POST" || req.Method == "PUT") {
+	// Add form encoded body values to parameters
+	if req.ContentLength > 0 && req.Header.Get("Content-Type") == "application/x-www-form-urlencoded" {
 		// read body
 		body, _ := ioutil.ReadAll(req.Body)
 
