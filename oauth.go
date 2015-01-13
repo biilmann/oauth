@@ -52,6 +52,10 @@ type Token struct {
 	Key, Secret string
 }
 
+func init() {
+	rand.Seed(time.Now().UnixNano())
+}
+
 // Authorize turns a request into valid oauth request by adding the
 // "Authorization" header
 func (c *Consumer) Authorize(req *http.Request, t *Token) {
@@ -81,7 +85,6 @@ const nonceLength = 20
 var alphanumeric = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
 func nonce() string {
-	rand.Seed(time.Now().Unix())
 	nonce := make([]byte, nonceLength)
 	for i := 0; i < nonceLength; i++ {
 		nonce[i] = alphanumeric[rand.Intn(len(alphanumeric))]
